@@ -34,5 +34,9 @@ class Book < ActiveRecord::Base
       "lovely #{matched}"
     end
   end
+
+  after_destroy do |book|
+    Rails.logger.info "Book is deleted: #{book.attributes.inspect}"
+  end
 end
 
