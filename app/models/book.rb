@@ -21,8 +21,16 @@ class Book < ActiveRecord::Base
     end
   end
 
-  before_validation do |book|
-    book.name = self.name.gsub(/Cat/) do |matched|
+  #before_validation do |book|
+  #  book.name = self.name.gsub(/Cat/) do |matched|
+  #    "lovely #{matched}"
+  #  end
+  #end
+
+  #メソッドを使った書き方
+  before_validation :add_lovely_to_cat
+  def add_lovely_to_cat
+    book.name = book.name.gsub(/Cat/) do |matched|
       "lovely #{matched}"
     end
   end
