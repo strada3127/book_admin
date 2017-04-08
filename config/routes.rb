@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'profile/show'
+
+  get 'profile/edit'
+
+  get 'profile/update'
+
   resources :publishers do
     resources :books
 
@@ -10,4 +16,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
+  resource :profile, only: %i{show edit update}
 end
